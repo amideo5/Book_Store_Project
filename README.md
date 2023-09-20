@@ -5,6 +5,9 @@ Navigate to the Elasticsearch installation directory.<br>
 Run .\bin\elasticsearch.bat to start Elasticsearch.<br>
 Keep the command prompt open and elasticsearch should run on port 9200
 
+Downlaod and install MongoDB from the official website: https://www.mongodb.com/try/download/community<br>
+Install mongo and start mongo in command prompt or use the MongoDB Compass to create a database and collections
+
 Steps to clone the repository and start the servers
 
 1.Clone the repository:<br>
