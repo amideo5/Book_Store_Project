@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^8.9.0",
     "axios": "^1.5.0",
     "notistack": "^3.0.1",
     "react": "^18.2.0",

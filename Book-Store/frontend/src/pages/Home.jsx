@@ -12,7 +12,23 @@ const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState("table");
+  const [searchQuery, setSearchQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
+
+  const handleSearch = () => {
+    setLoading(true);
+    axios
+      .get(`http://localhost:5555/books/search?query=${searchQuery}`)
+      .then((response) => {
+        setBooks(response.data.results);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        enqueueSnackbar("Error", { variant: "error" });
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +60,24 @@ const Home = () => {
           Card
         </button>
       </div>
+      
+        
+          <input
+            type="text"
+            placeholder="Search books..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border border-gray-300 px-2 py-1 rounded-lg"
+          />
+          <button
+            onClick={handleSearch}
+            className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+          >
+            Search
+          </button>
+
+        
+
       <div className="flex justify-between items-center">
         <h1 className="text-3xl my-8">Books List</h1>
         <Link to="/books/create">
